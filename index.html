@@ -55,9 +55,9 @@
       border-radius:999px;
       background:rgba(8,8,8,.74);
       backdrop-filter:blur(18px);
-      display:flex;
+      display:grid;
+      grid-template-columns:220px 1fr 220px;
       align-items:center;
-      justify-content:space-between;
       box-shadow:0 18px 70px rgba(0,0,0,.35);
       gap:14px;
     }
@@ -68,17 +68,26 @@
       gap:10px;
       font-weight:900;
       min-width:0;
-      flex:0 0 220px;
     }
 
-    .nav-brand img{
+    .nav-brand .brand-mark{
       width:42px;
       height:42px;
       min-width:42px;
       min-height:42px;
       flex:0 0 42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+
+    .nav-brand img{
+      width:100%;
+      height:100%;
       object-fit:contain;
       border-radius:50%;
+      flex:0 0 auto;
     }
 
     .nav-brand span{
@@ -90,18 +99,18 @@
 
     .nav-links{
       display:flex;
+      justify-content:center;
       gap:28px;
       color:var(--muted);
       font-size:.92rem;
       font-weight:700;
-      justify-content:center;
-      flex:1 1 auto;
     }
 
     .nav-links a{transition:.2s ease}
     .nav-links a:hover{color:var(--orange)}
 
     .nav-cta{
+      justify-self:end;
       padding:11px 18px;
       border-radius:999px;
       background:var(--orange);
@@ -110,9 +119,7 @@
       box-shadow:0 0 34px rgba(255,149,0,.3);
       transition:.25s ease;
       white-space:nowrap;
-      flex:0 0 auto;
     }
-
     .nav-cta:hover{transform:translateY(-2px);box-shadow:0 18px 52px rgba(255,149,0,.38)}
 
     .hero{
@@ -191,7 +198,14 @@
     }
 
     .hero-content{position:relative;z-index:2;text-align:center;max-width:930px}
-    .hero-logo{width:175px;margin:0 auto 24px;filter:drop-shadow(0 18px 45px rgba(0,0,0,.7))}
+
+    .hero-logo{
+      width:175px;
+      height:auto;
+      margin:0 auto 24px;
+      object-fit:contain;
+      filter:drop-shadow(0 18px 45px rgba(0,0,0,.7));
+    }
 
     .eyebrow{
       display:inline-flex;
@@ -263,6 +277,25 @@
       backdrop-filter:blur(10px);
     }
 
+    .trust-row{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .trust-card{
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.055);
+      backdrop-filter:blur(10px);
+      border-radius:22px;
+      padding:18px;
+      text-align:left;
+    }
+
+    .trust-card strong{display:block;font-size:1.15rem;margin-bottom:5px;color:#fff}
+    .trust-card small{color:var(--muted);line-height:1.45}
+
     section{padding:95px 0;position:relative}
     .section-head{max-width:780px;margin-bottom:44px}
     .center-head{text-align:center;margin-left:auto;margin-right:auto}
@@ -291,8 +324,18 @@
       align-items:center;
     }
 
-    .order-buttons{display:grid;gap:14px}
+    .mini-note{
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,149,0,.10);
+      border:1px solid rgba(255,149,0,.28);
+      color:#f5d7ad;
+      line-height:1.55;
+      font-size:.94rem;
+    }
 
+    .order-buttons{display:grid;gap:14px}
     .order-link{
       display:flex;
       justify-content:space-between;
@@ -304,15 +347,44 @@
       border:1px solid var(--line);
       transition:.25s ease;
     }
-
     .order-link:hover{transform:translateY(-4px);border-color:rgba(255,149,0,.55);background:rgba(255,149,0,.1)}
     .order-link.featured{background:linear-gradient(135deg,rgba(255,149,0,.20),rgba(255,149,0,.06));border-color:rgba(255,149,0,.48)}
     .order-link strong{font-size:1.08rem}
     .order-link small{color:var(--muted);display:block;margin-top:5px;line-height:1.45}
     .arrow{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#111;font-weight:900;flex:0 0 auto}
 
-    .product-grid,.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .steps-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
 
+    .step-card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#171717,#101010);
+      border-radius:26px;
+      padding:26px;
+      text-align:left;
+      box-shadow:var(--shadow);
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      background:rgba(255,149,0,.16);
+      color:var(--orange);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .step-card h3{font-family:'Montserrat',sans-serif;margin-bottom:10px}
+    .step-card p{color:var(--muted);line-height:1.6;font-size:.95rem}
+
+    .product-grid,.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .product-card{
       background:linear-gradient(180deg,#191919,#101010);
       border:1px solid var(--line);
@@ -322,7 +394,6 @@
       transition:.28s ease;
       position:relative;
     }
-
     .product-card:hover,.feature-card:hover{transform:translateY(-8px);border-color:rgba(255,149,0,.55)}
     .product-card img{width:100%;height:235px;object-fit:cover}
     .product-body{padding:23px}
@@ -360,7 +431,6 @@
       border:1px solid var(--line);
       transition:.25s ease;
     }
-
     .feature-icon{width:56px;height:56px;border-radius:18px;background:rgba(255,149,0,.16);display:grid;place-items:center;font-size:1.65rem;margin-bottom:18px}
 
     .split{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
@@ -399,7 +469,6 @@
       align-items:center;
       box-shadow:0 28px 90px rgba(255,149,0,.25);
     }
-
     .cta-box h2{font-family:'Montserrat',sans-serif;font-size:clamp(2.1rem,5vw,4.2rem);line-height:.95;letter-spacing:-.06em;font-weight:900;margin-bottom:14px}
     .cta-box p{max-width:650px;line-height:1.65;font-weight:700}
     .cta-box .btn{background:#111;color:white;white-space:nowrap}
@@ -433,10 +502,15 @@
     .reveal.active{opacity:1;transform:translateY(0)}
 
     @media(max-width:980px){
-      .nav-brand{flex:1 1 auto}
+      .nav{
+        display:flex;
+        justify-content:space-between;
+      }
+
       .nav-links{display:none}
       .order-box,.split,.contact-grid,.cta-box,.social-box{grid-template-columns:1fr}
-      .product-grid,.feature-grid{grid-template-columns:repeat(2,1fr)}
+      .product-grid,.feature-grid,.trust-row{grid-template-columns:repeat(2,1fr)}
+      .steps-grid{grid-template-columns:1fr}
       .gallery-grid{grid-template-columns:1fr 1fr}
       .gallery-card.large{grid-column:span 2;min-height:430px}
       .menu-strip{flex-direction:column;align-items:flex-start}
@@ -453,12 +527,11 @@
 
       .nav-brand{
         gap:8px;
-        font-size:.93rem;
         flex:1 1 auto;
         min-width:0;
       }
 
-      .nav-brand img{
+      .nav-brand .brand-mark{
         width:38px;
         height:38px;
         min-width:38px;
@@ -468,18 +541,21 @@
 
       .nav-brand span{
         display:inline-block;
-        max-width:132px;
+        font-size:.92rem;
+        max-width:140px;
       }
 
       .nav-cta{
-        padding:10px 13px;
-        font-size:.84rem;
+        padding:10px 14px;
+        font-size:.86rem;
+        flex:0 0 auto;
       }
 
       .hero{min-height:94vh;padding-top:120px}
       .hero-logo{width:140px}
       .hero-actions .btn{width:100%}
       .quick-points{display:none}
+      .trust-row{grid-template-columns:1fr}
       section{padding:72px 0}
       .product-grid,.feature-grid,.gallery-grid{grid-template-columns:1fr}
       .gallery-card.large{grid-column:auto;min-height:330px}
@@ -489,7 +565,9 @@
       .cta-box{border-radius:28px}
       .social-box{border-radius:28px}
 
-      .hero-slide{background-position:center}
+      .hero-slide{
+        background-position:center;
+      }
 
       .hero-slide::before{
         background:
@@ -500,12 +578,12 @@
 
     @media(max-width:390px){
       .nav-brand span{
-        max-width:108px;
+        max-width:118px;
         font-size:.86rem;
       }
 
       .nav-cta{
-        padding:9px 11px;
+        padding:9px 12px;
         font-size:.8rem;
       }
     }
@@ -531,13 +609,17 @@
 
 <nav class="nav">
   <a href="#inicio" class="nav-brand">
-    <img src="img/logo-critical.webp" alt="Critical Mass Linares" width="42" height="42">
+    <span class="brand-mark">
+      <img src="img/logo-critical.webp" alt="Critical Mass Linares">
+    </span>
     <span>Critical Mass</span>
   </a>
 
   <div class="nav-links">
     <a href="#pedir">Pedir</a>
     <a href="#productos">Carta</a>
+    <!-- <a href="#experiencia">Experiencia</a>
+    <a href="#galeria">Galería</a> -->
     <a href="#contacto">Contacto</a>
   </div>
 
@@ -554,7 +636,7 @@
   </div>
 
   <div class="container hero-content reveal">
-    <img class="hero-logo" src="img/logo-critical.webp" alt="Logo Critical Mass" width="175" height="175">
+    <img class="hero-logo" src="img/logo-critical.webp" alt="Logo Critical Mass">
 
     <div class="eyebrow">Lounge Bar & Delivery · Linares</div>
 
@@ -579,6 +661,7 @@
       <span>📋 Pedido por menú Fudo</span>
       <span>📍 Kurt Moller #754</span>
     </div>
+
   </div>
 </header>
 
@@ -682,6 +765,106 @@
     </div>
   </div>
 </section>
+
+<!-- <section class="experience" id="experiencia">
+  <div class="container">
+    <div class="section-head center-head reveal">
+      <div class="section-kicker">Experiencia Critical</div>
+      <h2 class="section-title">Local, delivery y buena vibra.</h2>
+      <p class="section-text">
+        Una propuesta con identidad urbana, carta variada, terraza y atención cercana en Linares.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔥</div>
+        <h3>Sabor potente</h3>
+        <p>Preparaciones pensadas para compartir, disfrutar y repetir.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">📋</div>
+        <h3>Menú digital</h3>
+        <p>Revisa la carta oficial y opciones disponibles desde Fudo.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">🍽️</div>
+        <h3>Terraza</h3>
+        <p>Un espacio real para juntarse, comer y pasarla bien.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">📍</div>
+        <h3>En Linares</h3>
+        <p>Ubicados en Kurt Moller #754, Linares.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section>
+  <div class="container split">
+    <div class="photo-stack reveal">
+      <img loading="lazy" class="photo-main" src="img/hero-critical.webp" alt="Ambiente Critical Mass">
+      <img loading="lazy" class="photo-small" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop" alt="Restaurante">
+    </div>
+
+    <div class="reveal">
+      <div class="section-kicker">Ambiente real</div>
+      <h2 class="section-title">Una marca con identidad propia.</h2>
+      <p class="section-text">
+        Negro, naranjo, terraza, comida y energía local. Una experiencia pensada para quienes buscan
+        algo rico, directo y con personalidad en Linares.
+      </p>
+
+      <div class="quote-box">
+        Ideal para quienes quieren pedir algo rico, juntarse en terraza o revisar la carta sin perder tiempo.
+      </div>
+
+      <br>
+
+      <a class="btn btn-primary" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=ambiente_menu" target="_blank" rel="noopener">
+        Revisar carta
+      </a>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section id="galeria">
+  <div class="container">
+    <div class="section-head center-head reveal">
+      <div class="section-kicker">Galería</div>
+      <h2 class="section-title">Comida, terraza y momentos.</h2>
+      <p class="section-text">
+        Una muestra del ambiente Critical: comida, terraza, sabores y momentos para compartir.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card large reveal">
+        <img loading="lazy" src="img/hero-critical.webp" alt="Critical Mass terraza">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop" alt="Comida">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop" alt="Restaurante">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200&auto=format&fit=crop" alt="Plato">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?q=80&w=1200&auto=format&fit=crop" alt="Cocina">
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <section>
   <div class="container">
