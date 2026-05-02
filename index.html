@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critical Mass Linares | Lounge Bar & Delivery</title>
+
+  <meta name="description" content="Critical Mass Linares. Sushi, pizzas, sándwiches, terraza, delivery y menú digital en Fudo. Ubicados en Kurt Moller #754, Linares.">
+  <meta property="og:title" content="Critical Mass Linares | Lounge Bar & Delivery">
+  <meta property="og:description" content="Revisa la carta digital, llama al local o consulta por WhatsApp. Sabor, terraza y buena vibra en Linares.">
+  <meta property="og:image" content="img/hero-critical.webp">
+  <meta property="og:type" content="website">
+
+  <link rel="preload" as="image" href="img/hero-critical.webp">
+  <link rel="preload" as="image" href="img/logo-critical.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#070707;
+      --bg-2:#0e0e0e;
+      --soft:#151515;
+      --soft-2:#1b1b1b;
+      --orange:#ff9500;
+      --orange-soft:#ffb341;
+      --white:#fff;
+      --muted:#b7b7b7;
+      --muted-2:#dfdfdf;
+      --line:rgba(255,255,255,.12);
+      --line-strong:rgba(255,149,0,.45);
+      --shadow:0 28px 90px rgba(0,0,0,.45);
+      --orange-shadow:0 22px 70px rgba(255,149,0,.30);
+      --radius:30px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(1180px,calc(100% - 32px));margin:auto}
+
+    .nav{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1180px,calc(100% - 32px));
+      z-index:99;
+      padding:12px 18px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(8,8,8,.74);
+      backdrop-filter:blur(18px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:0 18px 70px rgba(0,0,0,.35);
+      gap:14px;
+    }
+
+    .nav-brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .nav-brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:50%;
+      flex:0 0 auto;
+    }
+
+    .nav-brand span{
+      letter-spacing:-.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .nav-links{display:flex;gap:24px;color:var(--muted);font-size:.92rem;font-weight:700}
+    .nav-links a{transition:.2s ease}
+    .nav-links a:hover{color:var(--orange)}
+
+    .nav-cta{
+      padding:11px 18px;
+      border-radius:999px;
+      background:var(--orange);
+      color:#111;
+      font-weight:900;
+      box-shadow:0 0 34px rgba(255,149,0,.3);
+      transition:.25s ease;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 18px 52px rgba(255,149,0,.38)}
+
+    .hero{
+      min-height:100vh;
+      padding:150px 0 80px;
+      position:relative;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:#050505;
+    }
+
+    .hero-bg-slider{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+      background:#050505;
+    }
+
+    .hero-slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform:scale(1.05);
+      animation:heroSlider 21s infinite;
+      will-change:opacity,transform;
+    }
+
+    .hero-slide::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(255,149,0,.18),transparent 34%),
+        linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.60),rgba(0,0,0,.90));
+      z-index:1;
+    }
+
+    .hero-slide-1{
+      background-image:url("img/hero-critical.webp");
+      animation-delay:0s;
+    }
+
+    .hero-slide-2{
+      background-image:url("img/hero-2.webp");
+      animation-delay:7s;
+    }
+
+    .hero-slide-3{
+      background-image:url("img/hero-3.webp");
+      animation-delay:14s;
+    }
+
+    @keyframes heroSlider{
+      0%{opacity:0;transform:scale(1.05)}
+      7%{opacity:1}
+      31%{opacity:1;transform:scale(1.12)}
+      40%{opacity:0;transform:scale(1.14)}
+      100%{opacity:0;transform:scale(1.14)}
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:180px;
+      background:linear-gradient(to bottom,transparent,var(--bg));
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .hero-content{position:relative;z-index:2;text-align:center;max-width:930px}
+    .hero-logo{width:175px;margin:0 auto 24px;filter:drop-shadow(0 18px 45px rgba(0,0,0,.7))}
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 15px;
+      margin-bottom:20px;
+      border-radius:999px;
+      border:1px solid rgba(255,149,0,.45);
+      background:rgba(255,149,0,.13);
+      color:var(--orange-soft);
+      font-size:.82rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    h1{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2.7rem,8vw,6.5rem);
+      line-height:.9;
+      letter-spacing:-.07em;
+      font-weight:900;
+      margin-bottom:24px;
+      text-shadow:0 24px 70px rgba(0,0,0,.75);
+    }
+
+    h1 span,.section-kicker{color:var(--orange)}
+
+    .hero-text{
+      max-width:730px;
+      margin:0 auto 34px;
+      color:#e8e8e8;
+      font-size:clamp(1rem,2vw,1.25rem);
+      line-height:1.7;
+      font-weight:500;
+      text-shadow:0 12px 34px rgba(0,0,0,.65);
+    }
+
+    .hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:32px}
+
+    .btn{
+      min-height:56px;
+      padding:0 26px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      transition:.25s ease;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn-primary{background:var(--orange);color:#111;box-shadow:0 18px 55px rgba(255,149,0,.33)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 25px 80px rgba(255,149,0,.42)}
+    .btn-outline{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;backdrop-filter:blur(10px)}
+    .btn-outline:hover{transform:translateY(-3px);border-color:var(--orange);color:var(--orange)}
+
+    .quick-points{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+    .quick-points span{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      color:#e5e5e5;
+      font-size:.9rem;
+      font-weight:700;
+      backdrop-filter:blur(10px);
+    }
+
+    .trust-row{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .trust-card{
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.055);
+      backdrop-filter:blur(10px);
+      border-radius:22px;
+      padding:18px;
+      text-align:left;
+    }
+
+    .trust-card strong{display:block;font-size:1.15rem;margin-bottom:5px;color:#fff}
+    .trust-card small{color:var(--muted);line-height:1.45}
+
+    section{padding:95px 0;position:relative}
+    .section-head{max-width:780px;margin-bottom:44px}
+    .center-head{text-align:center;margin-left:auto;margin-right:auto}
+    .section-kicker{font-weight:900;text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;margin-bottom:14px}
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2rem,4.5vw,4.1rem);
+      line-height:.98;
+      letter-spacing:-.06em;
+      font-weight:900;
+      margin-bottom:16px;
+    }
+    .section-text{color:var(--muted);line-height:1.75;font-size:1.04rem}
+
+    .order-box{
+      background:
+        radial-gradient(circle at top left,rgba(255,149,0,.25),transparent 36%),
+        linear-gradient(180deg,#171717,#0e0e0e);
+      border:1px solid var(--line);
+      border-radius:38px;
+      padding:clamp(28px,5vw,56px);
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .mini-note{
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,149,0,.10);
+      border:1px solid rgba(255,149,0,.28);
+      color:#f5d7ad;
+      line-height:1.55;
+      font-size:.94rem;
+    }
+
+    .order-buttons{display:grid;gap:14px}
+    .order-link{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:22px;
+      border-radius:24px;
+      background:rgba(255,255,255,.055);
+      border:1px solid var(--line);
+      transition:.25s ease;
+    }
+    .order-link:hover{transform:translateY(-4px);border-color:rgba(255,149,0,.55);background:rgba(255,149,0,.1)}
+    .order-link.featured{background:linear-gradient(135deg,rgba(255,149,0,.20),rgba(255,149,0,.06));border-color:rgba(255,149,0,.48)}
+    .order-link strong{font-size:1.08rem}
+    .order-link small{color:var(--muted);display:block;margin-top:5px;line-height:1.45}
+    .arrow{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#111;font-weight:900;flex:0 0 auto}
+
+    .steps-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .step-card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#171717,#101010);
+      border-radius:26px;
+      padding:26px;
+      text-align:left;
+      box-shadow:var(--shadow);
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      background:rgba(255,149,0,.16);
+      color:var(--orange);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .step-card h3{font-family:'Montserrat',sans-serif;margin-bottom:10px}
+    .step-card p{color:var(--muted);line-height:1.6;font-size:.95rem}
+
+    .product-grid,.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product-card{
+      background:linear-gradient(180deg,#191919,#101010);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:.28s ease;
+      position:relative;
+    }
+    .product-card:hover,.feature-card:hover{transform:translateY(-8px);border-color:rgba(255,149,0,.55)}
+    .product-card img{width:100%;height:235px;object-fit:cover}
+    .product-body{padding:23px}
+    .product-tag{color:var(--orange);font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+    .product-body h3,.feature-card h3{font-family:'Montserrat',sans-serif;margin-bottom:10px}
+    .product-body p,.feature-card p{color:var(--muted);line-height:1.6;font-size:.95rem}
+
+    .menu-strip{
+      margin-top:34px;
+      padding:24px;
+      border-radius:28px;
+      border:1px solid rgba(255,149,0,.32);
+      background:linear-gradient(135deg,rgba(255,149,0,.15),rgba(255,255,255,.035));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .menu-strip div{text-align:left}
+    .menu-strip strong{font-family:'Montserrat',sans-serif;font-size:1.25rem}
+    .menu-strip p{margin-top:6px;color:var(--muted);line-height:1.55}
+
+    .experience{
+      background:
+        radial-gradient(circle at 10% 10%,rgba(255,149,0,.16),transparent 32%),
+        linear-gradient(180deg,#080808,#101010);
+    }
+
+    .feature-card{
+      min-height:220px;
+      padding:28px;
+      border-radius:26px;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      transition:.25s ease;
+    }
+    .feature-icon{width:56px;height:56px;border-radius:18px;background:rgba(255,149,0,.16);display:grid;place-items:center;font-size:1.65rem;margin-bottom:18px}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+    .photo-stack{min-height:540px;position:relative}
+    .photo-main,.photo-small{position:absolute;object-fit:cover;border-radius:34px;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .photo-main{width:80%;height:440px;right:0;top:0}
+    .photo-small{width:50%;height:270px;left:0;bottom:0;border:8px solid var(--bg)}
+
+    .quote-box{
+      margin-top:24px;
+      padding:22px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      color:var(--muted-2);
+      line-height:1.65;
+    }
+
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:18px}
+    .gallery-card{min-height:280px;border-radius:30px;overflow:hidden;border:1px solid var(--line);background:#111}
+    .gallery-card.large{grid-row:span 2;min-height:578px}
+    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:.45s ease}
+    .gallery-card:hover img{transform:scale(1.08)}
+
+    .cta-box{
+      padding:clamp(36px,7vw,72px);
+      border-radius:38px;
+      background:
+        linear-gradient(135deg,rgba(255,149,0,.95),rgba(255,186,67,.92)),
+        url("img/hero-critical.webp") center/cover no-repeat;
+      background-blend-mode:multiply;
+      color:#111;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:28px;
+      align-items:center;
+      box-shadow:0 28px 90px rgba(255,149,0,.25);
+    }
+    .cta-box h2{font-family:'Montserrat',sans-serif;font-size:clamp(2.1rem,5vw,4.2rem);line-height:.95;letter-spacing:-.06em;font-weight:900;margin-bottom:14px}
+    .cta-box p{max-width:650px;line-height:1.65;font-weight:700}
+    .cta-box .btn{background:#111;color:white;white-space:nowrap}
+
+    .social-box{
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top right,rgba(255,149,0,.16),transparent 38%),
+        linear-gradient(180deg,#161616,#101010);
+      border-radius:36px;
+      padding:clamp(30px,5vw,54px);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:26px;
+      align-items:center;
+      box-shadow:var(--shadow);
+    }
+
+    .social-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+    .contact-card{background:var(--soft);border:1px solid var(--line);border-radius:32px;padding:32px;box-shadow:var(--shadow)}
+    .contact-list{display:grid;gap:15px;color:var(--muted);line-height:1.6;margin:24px 0}
+    .contact-list strong{color:white}
+    .contact-list a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,149,0,.55);text-underline-offset:4px}
+    .map{width:100%;min-height:410px;border:0;border-radius:32px;filter:grayscale(1) invert(.9) contrast(.9);box-shadow:var(--shadow)}
+
+    footer{padding:34px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.92rem}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:.75s ease}
+    .reveal.active{opacity:1;transform:translateY(0)}
+
+    @media(max-width:980px){
+      .nav-links{display:none}
+      .order-box,.split,.contact-grid,.cta-box,.social-box{grid-template-columns:1fr}
+      .product-grid,.feature-grid,.trust-row{grid-template-columns:repeat(2,1fr)}
+      .steps-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .gallery-card.large{grid-column:span 2;min-height:430px}
+      .menu-strip{flex-direction:column;align-items:flex-start}
+      .social-actions{justify-content:flex-start}
+    }
+
+    @media(max-width:620px){
+      .nav{
+        top:10px;
+        width:calc(100% - 20px);
+        padding:10px 12px;
+        gap:10px;
+      }
+
+      .nav-brand{
+        gap:8px;
+        font-size:.93rem;
+        flex:1 1 auto;
+      }
+
+      .nav-brand img{
+        width:38px;
+        height:38px;
+      }
+
+      .nav-brand span{
+        display:inline-block;
+        max-width:132px;
+      }
+
+      .nav-cta{
+        padding:10px 13px;
+        font-size:.84rem;
+      }
+
+      .hero{min-height:94vh;padding-top:120px}
+      .hero-logo{width:140px}
+      .hero-actions .btn{width:100%}
+      .quick-points{display:none}
+      .trust-row{grid-template-columns:1fr}
+      section{padding:72px 0}
+      .product-grid,.feature-grid,.gallery-grid{grid-template-columns:1fr}
+      .gallery-card.large{grid-column:auto;min-height:330px}
+      .photo-stack{min-height:auto;display:grid;gap:16px}
+      .photo-main,.photo-small{position:relative;width:100%;height:310px;border:1px solid var(--line)}
+      .order-link{align-items:flex-start}
+      .cta-box{border-radius:28px}
+      .social-box{border-radius:28px}
+
+      .hero-slide{
+        background-position:center;
+      }
+
+      .hero-slide::before{
+        background:
+          radial-gradient(circle at 50% 32%,rgba(255,149,0,.20),transparent 34%),
+          linear-gradient(180deg,rgba(0,0,0,.86),rgba(0,0,0,.60),rgba(0,0,0,.94));
+      }
+    }
+
+    @media(max-width:390px){
+      .nav-brand span{
+        max-width:108px;
+        font-size:.86rem;
+      }
+
+      .nav-cta{
+        padding:9px 11px;
+        font-size:.8rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+
+      .hero-slide-1{
+        opacity:1;
+        transform:none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="#inicio" class="nav-brand">
+    <img src="img/logo-critical.webp" alt="Critical Mass Linares" width="42" height="42">
+    <span>Critical Mass</span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#pedir">Pedir</a>
+    <a href="#productos">Carta</a>
+    <!-- <a href="#experiencia">Experiencia</a>
+    <a href="#galeria">Galería</a> -->
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <a class="nav-cta" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=boton_nav" target="_blank" rel="noopener">
+    Ver menú
+  </a>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-bg-slider" aria-hidden="true">
+    <div class="hero-slide hero-slide-1"></div>
+    <div class="hero-slide hero-slide-2"></div>
+    <div class="hero-slide hero-slide-3"></div>
+  </div>
+
+  <div class="container hero-content reveal">
+    <img class="hero-logo" src="img/logo-critical.webp" alt="Logo Critical Mass" width="175" height="175">
+
+    <div class="eyebrow">Lounge Bar & Delivery · Linares</div>
+
+    <h1>El sabor que mueve <span>Linares</span></h1>
+
+    <p class="hero-text">
+      Sushi, pizzas, sándwiches y una experiencia CRITICAL. Revisa la carta digital,
+      llama al local o ven a disfrutar la terraza en Kurt Moller #754.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=hero_menu" target="_blank" rel="noopener">
+        Ver menú y pedir
+      </a>
+      <a class="btn btn-outline" href="tel:732211231">
+        Llamar al 732211231
+      </a>
+    </div>
+
+    <div class="quick-points">
+      <span>🔥 Comida preparada al momento</span>
+      <span>📋 Pedido por menú Fudo</span>
+      <span>📍 Kurt Moller #754</span>
+    </div>
+
+  </div>
+</header>
+
+<section id="productos">
+  <div class="container">
+    <div class="section-head center-head reveal">
+      <div class="section-kicker">Carta destacada</div>
+      <h2 class="section-title">Antojos que no fallan.</h2>
+      <p class="section-text">
+        Una carta pensada para acompañarte en distintos momentos.
+      </p>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop" alt="Pizza">
+        <div class="product-body">
+          <div class="product-tag">Pizza</div>
+          <h3>Pizzas para compartir</h3>
+          <p>Masa, sabor y combinaciones ideales para pedir en grupo.</p>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1200&auto=format&fit=crop" alt="Sushi">
+        <div class="product-body">
+          <div class="product-tag">Sushi</div>
+          <h3>Rolls & tablas</h3>
+          <p>Opciones frescas para delivery, retiro o terraza.</p>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop" alt="Sándwich">
+        <div class="product-body">
+          <div class="product-tag">Sándwiches</div>
+          <h3>Sabores contundentes</h3>
+          <p>Preparaciones con carácter y porciones generosas.</p>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=1200&auto=format&fit=crop" alt="Bar">
+        <div class="product-body">
+          <div class="product-tag">Lounge Bar</div>
+          <h3>Para disfrutar</h3>
+          <p>Ambiente, tragos y terraza para compartir.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu-strip reveal">
+      <div>
+        <strong>¿Quieres ver la carta completa?</strong>
+        <p>Consulta el menú actualizado y revisa las opciones disponibles antes de pedir.</p>
+      </div>
+      <a class="btn btn-primary" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=productos_menu" target="_blank" rel="noopener">
+        Abrir menú
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="pedir">
+  <div class="container">
+    <div class="order-box reveal">
+      <div>
+        <div class="section-kicker">Pide sin vueltas</div>
+        <h2 class="section-title">Elige tu forma de pedir.</h2>
+        <p class="section-text">
+          La forma más rápida es revisar la carta oficial en Fudo. Para pedidos o atención directa,
+          llama al local. WhatsApp queda disponible para consultas, reservas o dudas.
+        </p>
+      </div>
+
+      <div class="order-buttons">
+        <a class="order-link featured" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=card_menu" target="_blank" rel="noopener">
+          <span>
+            <strong>Ver menú digital</strong>
+            <small>Carta oficial Critical Mass en Fudo.</small>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="order-link" href="tel:732211231">
+          <span>
+            <strong>Llamar al local</strong>
+            <small>Pedidos y atención directa: 732211231.</small>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="order-link" href="https://wa.me/56973712452" target="_blank" rel="noopener">
+          <span>
+            <strong>WhatsApp consultas</strong>
+            <small>Reservas, dudas o información general.</small>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="experience" id="experiencia">
+  <div class="container">
+    <div class="section-head center-head reveal">
+      <div class="section-kicker">Experiencia Critical</div>
+      <h2 class="section-title">Local, delivery y buena vibra.</h2>
+      <p class="section-text">
+        Una propuesta con identidad urbana, carta variada, terraza y atención cercana en Linares.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔥</div>
+        <h3>Sabor potente</h3>
+        <p>Preparaciones pensadas para compartir, disfrutar y repetir.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">📋</div>
+        <h3>Menú digital</h3>
+        <p>Revisa la carta oficial y opciones disponibles desde Fudo.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">🍽️</div>
+        <h3>Terraza</h3>
+        <p>Un espacio real para juntarse, comer y pasarla bien.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">📍</div>
+        <h3>En Linares</h3>
+        <p>Ubicados en Kurt Moller #754, Linares.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section>
+  <div class="container split">
+    <div class="photo-stack reveal">
+      <img loading="lazy" class="photo-main" src="img/hero-critical.webp" alt="Ambiente Critical Mass">
+      <img loading="lazy" class="photo-small" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop" alt="Restaurante">
+    </div>
+
+    <div class="reveal">
+      <div class="section-kicker">Ambiente real</div>
+      <h2 class="section-title">Una marca con identidad propia.</h2>
+      <p class="section-text">
+        Negro, naranjo, terraza, comida y energía local. Una experiencia pensada para quienes buscan
+        algo rico, directo y con personalidad en Linares.
+      </p>
+
+      <div class="quote-box">
+        Ideal para quienes quieren pedir algo rico, juntarse en terraza o revisar la carta sin perder tiempo.
+      </div>
+
+      <br>
+
+      <a class="btn btn-primary" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=ambiente_menu" target="_blank" rel="noopener">
+        Revisar carta
+      </a>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section id="galeria">
+  <div class="container">
+    <div class="section-head center-head reveal">
+      <div class="section-kicker">Galería</div>
+      <h2 class="section-title">Comida, terraza y momentos.</h2>
+      <p class="section-text">
+        Una muestra del ambiente Critical: comida, terraza, sabores y momentos para compartir.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card large reveal">
+        <img loading="lazy" src="img/hero-critical.webp" alt="Critical Mass terraza">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop" alt="Comida">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop" alt="Restaurante">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200&auto=format&fit=crop" alt="Plato">
+      </div>
+
+      <div class="gallery-card reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?q=80&w=1200&auto=format&fit=crop" alt="Cocina">
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section>
+  <div class="container">
+    <div class="social-box reveal">
+      <div>
+        <div class="section-kicker">Síguenos</div>
+        <h2 class="section-title">Lo que está pasando en Critical 🔥</h2>
+        <p class="section-text">
+          Promos, platos nuevos, horarios, terraza y contenido del local.
+        </p>
+      </div>
+
+      <div class="social-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/criticalmassdelivery/" target="_blank" rel="noopener">
+          Ir a Instagram
+        </a>
+        <a class="btn btn-outline" href="https://wa.me/56973712452" target="_blank" rel="noopener">
+          Consultas por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="section-kicker">Contacto</div>
+        <h2 class="section-title">Encuéntranos en Linares.</h2>
+
+        <div class="contact-list">
+          <p><strong>Dirección:</strong><br>Kurt Moller #754, Linares</p>
+          <p><strong>Pedidos por teléfono:</strong><br><a href="tel:732211231">732211231</a></p>
+          <p><strong>Menú digital:</strong><br><a href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=contacto_menu" target="_blank" rel="noopener">Ver carta en Fudo</a></p>
+          <p><strong>WhatsApp consultas:</strong><br><a href="https://wa.me/56973712452" target="_blank" rel="noopener">+56 9 7371 2452</a></p>
+          <p><strong>Instagram:</strong><br><a href="https://www.instagram.com/criticalmassdelivery/" target="_blank" rel="noopener">@criticalmassdelivery</a></p>
+        </div>
+
+        <div class="hero-actions" style="justify-content:flex-start;margin-bottom:0;">
+          <a class="btn btn-primary" href="tel:732211231">Llamar al local</a>
+          <a class="btn btn-outline" href="https://menu.fu.do/criticalmass?utm_source=landing&utm_medium=web&utm_content=contacto_boton_menu" target="_blank" rel="noopener">Ver menú</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Kurt%20Moller%20754%20Linares%20Chile&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Critical Mass Linares · Lounge Bar & Delivery · Kurt Moller #754
+</footer>
+
+<script>
+  const revealItems = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  revealItems.forEach((item) => observer.observe(item));
+</script>
+
+</body>
+</html>
