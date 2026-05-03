@@ -8,10 +8,10 @@
   <meta name="description" content="Critical Mass Linares. Sushi, pizzas, sándwiches, terraza, delivery y menú digital en Fudo. Ubicados en Kurt Moller #754, Linares.">
   <meta property="og:title" content="Critical Mass Linares | Lounge Bar & Delivery">
   <meta property="og:description" content="Revisa la carta digital, llama al local o consulta por WhatsApp. Sabor, terraza y buena vibra en Linares.">
-  <meta property="og:image" content="img/hero5.webp">
+  <meta property="og:image" content="img/hero-critical.webp">
   <meta property="og:type" content="website">
 
-  <link rel="preload" as="image" href="img/hero5.webp">
+  <link rel="preload" as="image" href="img/hero-critical.webp">
   <link rel="preload" as="image" href="img/logo-critical.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,7 +150,6 @@
       transform:scale(1.05);
       animation:heroSlider 21s infinite;
       will-change:opacity,transform;
-      filter:brightness(1.05) contrast(1.05);
     }
 
     .hero-slide::before{
@@ -158,8 +157,8 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 35%,rgba(255,149,0,.20),transparent 40%),
-        linear-gradient(180deg,rgba(0,0,0,.70),rgba(0,0,0,.30),rgba(0,0,0,.75));
+        radial-gradient(circle at 50% 40%,rgba(255,149,0,.18),transparent 34%),
+        linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.60),rgba(0,0,0,.90));
       z-index:1;
     }
 
@@ -169,12 +168,12 @@
     }
 
     .hero-slide-2{
-      background-image:none;
+      background-image:url("img/hero-3.webp");
       animation-delay:7s;
     }
 
     .hero-slide-3{
-      background-image:none;
+      background-image:url("img/hero-2.webp");
       animation-delay:14s;
     }
 
@@ -572,8 +571,8 @@
 
       .hero-slide::before{
         background:
-          radial-gradient(circle at 50% 30%,rgba(255,149,0,.22),transparent 42%),
-          linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.35),rgba(0,0,0,.85));
+          radial-gradient(circle at 50% 32%,rgba(255,149,0,.20),transparent 34%),
+          linear-gradient(180deg,rgba(0,0,0,.86),rgba(0,0,0,.60),rgba(0,0,0,.94));
       }
     }
 
@@ -632,8 +631,8 @@
 <header class="hero" id="inicio">
   <div class="hero-bg-slider" aria-hidden="true">
     <div class="hero-slide hero-slide-1"></div>
-    <div class="hero-slide hero-slide-2" data-bg="img/hero-3.webp"></div>
-    <div class="hero-slide hero-slide-3" data-bg="img/hero-2.webp"></div>
+    <div class="hero-slide hero-slide-2"></div>
+    <div class="hero-slide hero-slide-3"></div>
   </div>
 
   <div class="container hero-content reveal">
@@ -923,14 +922,6 @@
 </footer>
 
 <script>
-  window.addEventListener('load', () => {
-    window.setTimeout(() => {
-      document.querySelectorAll('.hero-slide[data-bg]').forEach((slide) => {
-        slide.style.backgroundImage = `url("${slide.dataset.bg}")`;
-      });
-    }, 700);
-  });
-
   const revealItems = document.querySelectorAll('.reveal');
 
   const observer = new IntersectionObserver((entries) => {
